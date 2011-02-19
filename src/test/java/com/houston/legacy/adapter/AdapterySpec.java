@@ -45,8 +45,7 @@ public class AdapterySpec extends Specification<Adaptery>{
 		ClassToBeAdapted.callInterface = callInterface;
 	}
 	
-	public class GivenDefaults {
-		
+	public class GivenDefaults {		
 		public void shouldCreateAdapterWithSignatureMatchMapping() {
 			AdaptedInterface adapter = adaptery.createAdapter(AdaptedInterface.class, ClassToBeAdapted.class);
 			checking(new Expectations() {{
@@ -74,8 +73,7 @@ public class AdapterySpec extends Specification<Adaptery>{
 		}
 	}
 	
-	public class GivenOneDifferentiatingMapping {
-		
+	public class GivenOneDifferentiatingMapping {		
 		public void shouldMapAsManuallyAskedTo() {
 			AdaptedInterface adapter = adaptery.withAdpaterName("ManualMappingAdapter").withManualMapping(new ManualMapping() {{
 				put("methodNumberOne", "methodNumberTwo");
