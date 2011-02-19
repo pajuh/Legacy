@@ -1,3 +1,6 @@
+/**
+ * @author pasi.honkanen@houston-inc.com
+ */
 package com.houston.legacy.adapter;
 
 import static org.junit.Assert.assertEquals;
@@ -43,8 +46,6 @@ public class AdapterySpec extends Specification<Adaptery>{
 	}
 	
 	public class GivenDefaults {
-		
-
 		
 		public void shouldCreateAdapterWithSignatureMatchMapping() {
 			AdaptedInterface adapter = adaptery.createAdapter(AdaptedInterface.class, ClassToBeAdapted.class);
