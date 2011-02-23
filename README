@@ -8,6 +8,12 @@ Currently you can:
 2) create facade from set of classes to implement one interface
 3) you can give your custom mapping for methods
 
+See:
+
+/src/test/java/com/houston/legacy/adapter/AdapterySpec.java
+
+For usage
+
 best,
 
 Pasi
