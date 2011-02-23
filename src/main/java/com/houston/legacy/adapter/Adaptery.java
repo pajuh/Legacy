@@ -8,9 +8,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.houston.legacy.adapter.internal.Interceptable;
+import com.houston.legacy.adapter.internal.InterceptionPhase;
+import com.houston.legacy.adapter.internal.Interceptions;
+import com.houston.legacy.adapter.internal.ProxyFieldNameResolver;
 import com.houston.legacy.adapter.mapper.ByNameAsDefaultCustomizableMapper;
 import com.houston.legacy.adapter.mapper.CustomizableMethodMapper;
 import com.houston.legacy.adapter.mapper.ManualMapper;
+import com.houston.legacy.adapter.source.parts.AfterInterceptionPart;
+import com.houston.legacy.adapter.source.parts.BeforeInterceptionPart;
+import com.houston.legacy.adapter.source.parts.CallParameterPart;
 import com.houston.legacy.adapter.source.parts.MethodNamePart;
 import com.houston.legacy.adapter.source.parts.MethodPart;
 import com.houston.legacy.adapter.source.parts.MethodSourceBlockPart;
@@ -121,7 +128,7 @@ public class Adaptery {
 		return new InterceptionPhase(this);
 	}
 
-	protected void beforeInterception(BeforeInterception beforeInterception) {
+	public void beforeInterception(BeforeInterception beforeInterception) {
 		this.beforeInterception = beforeInterception;
 	}
 
@@ -134,8 +141,8 @@ public class Adaptery {
 	}
 
 	private void buildInterceptionFieldAndMethods(CtClass adapter) throws CannotCompileException {
-		adapter.addField(CtField.make("private com.houston.legacy.adapter.Interceptions interceptions;", adapter));
-		adapter.addMethod(CtMethod.make("public void setInterceptions(com.houston.legacy.adapter.Interceptions interceptions) { this.interceptions = interceptions; }", adapter));
+		adapter.addField(CtField.make("private com.houston.legacy.adapter.internal.Interceptions interceptions;", adapter));
+		adapter.addMethod(CtMethod.make("public void setInterceptions(com.houston.legacy.adapter.internal.Interceptions interceptions) { this.interceptions = interceptions; }", adapter));
 	}
 
 	private <T> void buildMethodsAndFields(Class<T> interfaceToImplement, List<Class<?>> classesToBeAdapted, CtClass adapter) throws CannotCompileException {

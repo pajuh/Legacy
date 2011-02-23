@@ -1,11 +1,11 @@
 /**
  * @author pasi.honkanen@houston-inc.com
  */
-package com.houston.legacy.adapter;
+package com.houston.legacy.adapter.source.parts;
 
 import java.lang.reflect.Method;
 
-import com.houston.legacy.adapter.source.parts.MethodPart;
+import com.houston.legacy.adapter.AfterInterception;
 
 public class AfterInterceptionPart implements MethodPart {
 
@@ -18,7 +18,6 @@ public class AfterInterceptionPart implements MethodPart {
 	@Override
 	public String build(Method method) {
 		if (afterInterception == null) return "";
-		String string = "this.interceptions.afterInterception().after();";
-		return string;
+		return "this.interceptions.afterInterception().after();";
 	}
 }

@@ -1,7 +1,11 @@
 /**
  * @author pasi.honkanen@houston-inc.com
  */
-package com.houston.legacy.adapter;
+package com.houston.legacy.adapter.internal;
+
+import com.houston.legacy.adapter.Adaptery;
+import com.houston.legacy.adapter.AfterInterception;
+import com.houston.legacy.adapter.BeforeInterception;
 
 public class InterceptionPhase {
 

@@ -1,11 +1,11 @@
 /**
  * @author pasi.honkanen@houston-inc.com
  */
-package com.houston.legacy.adapter;
+package com.houston.legacy.adapter.source.parts;
 
 import java.lang.reflect.Method;
 
-import com.houston.legacy.adapter.source.parts.MethodPart;
+import com.houston.legacy.adapter.BeforeInterception;
 
 public class BeforeInterceptionPart implements MethodPart {
 
@@ -18,8 +18,7 @@ public class BeforeInterceptionPart implements MethodPart {
 	@Override
 	public String build(Method method) {
 		if (beforeInterception == null) return "";
-		String string = "this.interceptions.beforeInterception().before();";
-		return string;
+		return "this.interceptions.beforeInterception().before();";
 	}
 	
 }

@@ -2,7 +2,7 @@ package com.houston.legacy.adapter.source.parts;
 
 import java.lang.reflect.Method;
 
-import com.houston.legacy.adapter.ProxyFieldNameResolver;
+import com.houston.legacy.adapter.internal.ProxyFieldNameResolver;
 import com.houston.legacy.adapter.mapper.MethodMapper;
 
 public class MethodSourceBlockPart implements MethodPart {

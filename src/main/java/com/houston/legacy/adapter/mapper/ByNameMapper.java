@@ -10,16 +10,16 @@ import java.util.List;
 class ByNameMapper implements MethodMapper {
 	
 	@Override
-	public boolean accept(Method method, Class classToBeAdapted) {
+	public boolean accept(Method method, Class<?> classToBeAdapted) {
 		List<Method> asList = Arrays.asList(classToBeAdapted.getMethods());
-		for (Method method2 : asList) {
-			if (method2.getName().equals(method.getName())) return true;
+		for (Method proxyClassMethod : asList) {
+			if (proxyClassMethod.getName().equals(method.getName())) return true;
 		}
 		return false;
 	}
 
 	@Override
-	public String map(Method method, Class classToBeMappedFor) {
+	public String map(Method method, Class<?> classToBeMappedFor) {
 		return method.getName();
 	}
 }
