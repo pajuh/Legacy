@@ -1,0 +1,17 @@
+Legacy is a small thing, which can create adapters automatically for you. 
+
+Idea came from certain annoying situation when dealing with legacy code. 
+
+Currently you can:
+
+1) create adapter or proxy for one interface from one class.
+2) create facade from set of classes to implement one interface
+3) you can give your custom mapping for methods
+
+best,
+
+Pasi
+
+
+
+

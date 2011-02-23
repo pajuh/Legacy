@@ -1,8 +1,11 @@
+/**
+ * @author pasi.honkanen@houston-inc.com
+ */
 package com.houston.legacy.adapter.mapper;
 
 import java.lang.reflect.Method;
 
-interface MethodMapper {
-	public String map(Method method);
-	public boolean accept(Method method);
+public interface MethodMapper {
+	public boolean accept(Method method, Class<?> classToBeAdapted);
+	public String map(Method method, Class<?> classToBeMappedFor);
 }

@@ -1,9 +1,12 @@
+/**
+ * @author pasi.honkanen@houston-inc.com
+ */
 package com.houston.legacy.adapter.mapper;
 
 import java.lang.reflect.Method;
 import java.util.Map;
 
-public class ManualMapper<T> implements MethodMapper {
+public class ManualMapper implements MethodMapper {
 
 	private final Map<String, String> manualMapping;
 
@@ -12,12 +15,12 @@ public class ManualMapper<T> implements MethodMapper {
 	}
 
 	@Override
-	public String map(Method method) {
-		return manualMapping.get(method.getName());
+	public boolean accept(Method method, Class<?> classToBeAdapted) {
+		return manualMapping.containsKey(method.getName());
 	}
 
 	@Override
-	public boolean accept(Method method) {
-		return manualMapping.containsKey(method.getName());
+	public String map(Method method, Class<?> classToBeMappedFor) {
+		return manualMapping.get(method.getName());
 	}
 }
