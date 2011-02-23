@@ -12,6 +12,7 @@ import com.houston.legacy.adapter.mapper.CustomizableMapper;
 import com.houston.legacy.adapter.mapper.ManualMapper;
 import com.houston.legacy.adapter.source.parts.MethodNamePart;
 import com.houston.legacy.adapter.source.parts.MethodPart;
+import com.houston.legacy.adapter.source.parts.MethodSourceBlockPart;
 import com.houston.legacy.adapter.source.parts.ParameterPart;
 import com.houston.legacy.adapter.source.parts.ReturnValuePart;
 import com.houston.legacy.adapter.source.parts.SourceBlockPart;
@@ -59,7 +60,7 @@ public class Adaptery {
 				add(new ParameterPart());
 				add(new SourceBlockPart(new ArrayList<MethodPart>() {{
 						add(new BeforeInterceptionPart(beforeInterception));
-						add(new MethodSourceBlockPart(classToBeAdapted));
+						add(new MethodSourceBlockPart(classToBeAdapted, customizedMapper));
 						add(new CallParameterPart());
 						add(new AfterInterceptionPart(afterInterception));
 					}
@@ -85,29 +86,6 @@ public class Adaptery {
 				}
 				makeClass.addMethod(CtMethod.make(stringBuilder.toString(), makeClass));
 			}
-		}
-	}
-
-	public class MethodSourceBlockPart implements MethodPart {
-
-		private final Class<?> classToBeMappedFor;
-		private String proxyFieldName;
-
-		public MethodSourceBlockPart(Class<?> classToBeMappedFor) {
-			this.classToBeMappedFor = classToBeMappedFor;
-			this.proxyFieldName = new ProxyFieldNameResolver().resolve(classToBeMappedFor);
-		}
-
-		@Override
-		public String build(Method method) {
-			return decideReturnType(method) + " " + proxyFieldName + "." + customizedMapper.map(method, classToBeMappedFor);
-		}
-
-		private String decideReturnType(Method method) {
-			if (method.getReturnType().getName() == "void") {
-				return "";
-			} else
-				return "return";
 		}
 	}
 
